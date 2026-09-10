@@ -36,11 +36,11 @@ export function validarAtualizacaoProduto(req, res, next) {
         erros.push('envie pelo menos um campo para atualizar');
      }
 
-    if (!nome || typeof nome !== 'string' || !nome.trim()) {
+    if (nome !== undefined && (typeof nome !== 'string' || !nome.trim)) {
         erros.push('nome é obrigatório e deve ser um texto');
     }
 
-    if (preco === undefined || preco === null || typeof preco !== 'number' || preco <=0) {
+    if (preco !== undefined && (typeof preco !== null || typeof preco !== 'number' || preco <=0)){
         erros.push('preço é obrigatóri e deve ser um número maior que zero');
     }
 
@@ -48,7 +48,7 @@ export function validarAtualizacaoProduto(req, res, next) {
         erros.push('quantidade_estoque deve ser um número maior ou igual a zero');
     }
 
-    if (categorias_id || categorias_id !== undefined || categorias_id !== null || typeof categorias_id !== 'number') {
+    if (categorias_id !== undefined && categorias_id !== undefined || categorias_id !== null || typeof categorias_id !== 'number') {
         erros.push('categorias_id é obrigatório e deve ser um número')
     }
 
