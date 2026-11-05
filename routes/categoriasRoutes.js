@@ -2,7 +2,7 @@ import express from 'express';
 import * as controller from '../controllers/categoriasControllers.js';
 import { validarCategoria } from '../middlewares/validarCategorias.js';
 
-const router = express.router();
+const router = express.Router();
 
 router.post('/categorias', validarCategoria, controller.criar);
 router.get('/categorias', controller.listar);

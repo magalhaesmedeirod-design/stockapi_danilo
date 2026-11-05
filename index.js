@@ -3,6 +3,11 @@ import express from 'express';
 import cors from 'cors';
 import produtosRoutes from './routes/produtosRoutes.js'; 
 import categoriasRoutes from './routes/categoriasRoutes.js';
+// Adicione isto no topo do seu index.js
+import usuariosRoutes from './routes/usuariosRoutes.js';
+
+
+
 
 const app =  express();
 
@@ -12,6 +17,11 @@ app.use(express.json());
 app.get('/health', (req, res) => res.json({status: 'OK'}));
 app.use('/api/v1/stockapi', produtosRoutes);
 app.use('/api/v1/stockapi', categoriasRoutes);
+app.use('/api/v1/stockapi', usuariosRoutes);
+
+
+
+
 app.use((req, res)=>{
     res.status(404).json({erro: `Rota - ${req.method} ${req.originalUrl} - não foi encontrada`})
 })
